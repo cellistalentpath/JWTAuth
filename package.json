@@ -1,0 +1,21 @@
+{
+  "name": "JWTAuth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dec-inc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cellistalentpath/JWTAuth.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cellistalentpath/JWTAuth/issues"
+  },
+  "homepage": "https://github.com/cellistalentpath/JWTAuth#readme"
+}
