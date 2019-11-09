@@ -9,9 +9,17 @@ app.use(cors());
 // app.header("Access-Control-Allow-Origin", "*");
 const port = process.env.PORT || 3100;
 
-let data = '{ "name" : "CJ" }';
+let data = JSON.parse(
+	'{ "email" : "test@gmail.com", "password" : "password3"}'
+);
 
 //const welcomeMessage = JSON.parse(message);
+
+app.post("/api/register", (req, res) => {
+	//data = req;
+	data = req.body;
+	res.send(data);
+});
 
 app.get("/", (req, res) => res.send(data));
 
