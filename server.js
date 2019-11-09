@@ -6,19 +6,21 @@ const app = express();
 //app.disable("x-powered-by");
 app.use(express.json());
 app.use(cors());
-// app.header("Access-Control-Allow-Origin", "*");
 const port = process.env.PORT || 3100;
 
-let data = JSON.parse(
-	'{ "email" : "test@gmail.com", "password" : "password3"}'
-);
-
-//const welcomeMessage = JSON.parse(message);
+let data = JSON.parse('{ "email" : "null", "password" : "null"}');
 
 app.post("/api/register", (req, res) => {
-	//data = req;
 	data = req.body;
 	res.send(data);
+});
+
+app.post("/api/sign-in", (req, res) => {
+	if (JSON.stringify(req.body) === JSON.stringify(data)) {
+		res.send(JSON.parse('{ "success" : "yes"}'));
+	} else {
+		res.send(JSON.parse('{ "success" : "no"}'));
+	}
 });
 
 app.get("/", (req, res) => res.send(data));
