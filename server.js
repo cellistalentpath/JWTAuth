@@ -1,9 +1,11 @@
 const express = require("express");
+const cors = require("cors");
 //const { GenerateJWT, DecodeJWT, ValidateJWT } = require("./dec-inc.js");
 
 const app = express();
 //app.disable("x-powered-by");
 app.use(express.json());
+app.use(cors());
 // app.header("Access-Control-Allow-Origin", "*");
 const port = process.env.PORT || 3100;
 
