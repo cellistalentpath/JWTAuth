@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/cellistalentpath/JWTAuth/issues"
   },
-  "homepage": "https://github.com/cellistalentpath/JWTAuth#readme"
+  "homepage": "https://github.com/cellistalentpath/JWTAuth#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
