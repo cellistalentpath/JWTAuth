@@ -8,19 +8,24 @@ app.use(express.json());
 app.use(cors());
 const port = process.env.PORT || 3100;
 
-let data = JSON.parse('{ "email" : "null", "password" : "null"}');
+let data = JSON.parse(
+	'{ "users": [ { "email" : "test@test.com", "password" : "pass42"}, { "email" : "hello@hello.com", "password" : "hello"} ] }'
+);
 
 app.post("/api/register", (req, res) => {
-	data = req.body;
+	data.users.push(req.body);
 	res.send(data);
 });
 
 app.post("/api/sign-in", (req, res) => {
-	if (JSON.stringify(req.body) === JSON.stringify(data)) {
-		res.send(JSON.parse('{ "success" : "yes"}'));
-	} else {
-		res.send(JSON.parse('{ "success" : "no"}'));
+	for (let user of data.users) {
+		let { email, password } = user;
+		if (email === req.body.email && password === req.body.password) {
+			res.send(JSON.parse('{ "success" : "yes"}'));
+			return;
+		}
 	}
+	res.send(JSON.parse('{ "success" : "no"}'));
 });
 
 app.get("/", (req, res) => res.send(data));
