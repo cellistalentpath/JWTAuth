@@ -3,14 +3,12 @@ const cors = require('cors');
 //const { GenerateJWT, DecodeJWT, ValidateJWT } = require("./dec-inc.js");
 
 const app = express();
-//app.disable("x-powered-by");
+app.disable('x-powered-by');
 app.use(express.json());
 app.use(cors());
 const port = process.env.PORT || 3100;
 
-let data = JSON.parse(
-	'{ "users": [ { "email" : "test@test.com", "password" : "pass42"}, { "email" : "hello@hello.com", "password" : "hello"} ] }'
-);
+let data = JSON.parse('{ "users": [  ] }');
 
 app.post('/api/register', (req, res) => {
 	if (JSON.stringify(req.body.email).includes('@')) {
@@ -25,6 +23,7 @@ app.post('/api/sign-in', (req, res) => {
 	for (let user of data.users) {
 		let { email, password } = user;
 		if (email === req.body.email && password === req.body.password) {
+			user.last_login = req.body.last_login;
 			res.send('Sign-in successful');
 			return;
 		}
